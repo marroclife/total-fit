@@ -1,6 +1,7 @@
 import SiloHero from "./components/SiloHero";
 import SiloContent from "./components/SiloContent";
 import SiloFooter from "./components/SiloFooter";
+import SharedHeader from "./components/SharedHeader";
 
 type SiloData = {
   title: string;
@@ -127,22 +128,26 @@ export default function SiloApp() {
 
   return (
     <div className="relative min-h-screen bg-obsidian text-neutral-100 font-sans selection:bg-brand-red selection:text-white">
-      <SiloHero
-        title={silo.title}
-        subtitle={silo.subtitle}
-        location={silo.location}
-      />
-      <SiloContent
-        intro={silo.intro}
-        differentials={silo.differentials}
-        structureTitle={silo.structureTitle}
-        structureText={silo.structureText}
-        faqs={silo.faqs}
-        ctaTitle={silo.ctaTitle}
-        ctaButton={silo.ctaButton}
-        whatsappMessage={silo.whatsappMessage}
-      />
-      <SiloFooter />
+      <SharedHeader />
+
+      <div className="pt-24">
+        <SiloHero
+          title={silo.title}
+          subtitle={silo.subtitle}
+          location={silo.location}
+        />
+        <SiloContent
+          intro={silo.intro}
+          differentials={silo.differentials}
+          structureTitle={silo.structureTitle}
+          structureText={silo.structureText}
+          faqs={silo.faqs}
+          ctaTitle={silo.ctaTitle}
+          ctaButton={silo.ctaButton}
+          whatsappMessage={silo.whatsappMessage}
+        />
+        <SiloFooter />
+      </div>
     </div>
   );
 }

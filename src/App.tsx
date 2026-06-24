@@ -1,4 +1,5 @@
 import CustomCursor from "./components/CustomCursor";
+import SharedHeader from "./components/SharedHeader";
 import Hero from "./components/Hero";
 import ExpansionBanner from "./components/ExpansionBanner";
 import BentoAbout from "./components/BentoAbout";
@@ -13,7 +14,7 @@ import { Send } from "lucide-react";
 
 export default function App() {
   const triggerGlobalWhatsApp = () => {
-    const baseMsg = "Olá! Gostaria de agendar uma aula experimental grátis na *Total Fit Academia*!";
+    const baseMsg = "Olá! Gostaria de saber mais sobre os planos da *Total Fit Academia*.";
     window.open(`https://wa.me/5521968774308?text=${encodeURIComponent(baseMsg)}`, "_blank");
   };
 
@@ -22,8 +23,12 @@ export default function App() {
       {/* Custom Cinematic Desktop Cursor */}
       <CustomCursor />
 
-      {/* Hero */}
-      <Hero />
+      {/* Header compartilhado */}
+      <SharedHeader />
+
+      <div className="pt-24">
+        {/* Hero */}
+        <Hero />
 
       {/* Grande Novidade: Expansão */}
       <ExpansionBanner />
@@ -65,6 +70,7 @@ export default function App() {
           MATRÍCULA EXPRESSA
         </span>
       </motion.button>
+      </div>
     </div>
   );
 }

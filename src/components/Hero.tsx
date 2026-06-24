@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
-import { Play, ArrowDown, ChevronRight, Activity, Menu, X } from "lucide-react";
+import { Play, ArrowDown, ChevronRight, Activity } from "lucide-react";
 import confetti from "canvas-confetti";
 
 interface MagneticButtonProps {
@@ -110,7 +110,6 @@ function MagneticButton({ children, className = "", onClick, primary = false }: 
 
 export default function Hero() {
   const words = ["A", "MAIOR", "ACADEMIA", "DE", "MANGARATIBA"];
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Scroll to customized target
   const scrollToSection = (id: string) => {
@@ -151,80 +150,6 @@ export default function Hero() {
 
       {/* Decorative Grid Overlay (Tech Performance feeling) */}
       <div className="absolute inset-0 bg-dot-grid-white opacity-25 z-[5] pointer-events-none" />
-
-      {/* Header Slot (Floating Navigation) */}
-      <header className="relative w-full z-20 px-6 py-6 md:px-12 flex justify-between items-center max-w-7xl mx-auto pointer-events-auto bg-gradient-to-b from-obsidian/80 via-obsidian/40 to-transparent">
-        <div className="flex items-center gap-3 group cursor-pointer" onClick={() => scrollToSection("inicio")}>
-          <img 
-            src="/assets/logo-totalfit.png" 
-            alt="Total Fit Academia" 
-            className="h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
-          />
-        </div>
-        
-        <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollToSection(item.toLowerCase())}
-              className="font-display font-medium text-xs tracking-widest text-neutral-400 hover:text-white uppercase transition-colors py-2 relative group cursor-pointer"
-            >
-              {item}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-brand-red transition-all duration-300 group-hover:w-full" />
-            </button>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-4">
-          <button
-            onClick={() => scrollToSection("planos")}
-            className="hidden sm:block px-5 py-2.5 rounded-full border border-brand-red/30 hover:border-brand-red bg-brand-red/5 text-brand-red hover:text-white font-display font-semibold text-xs tracking-widest uppercase transition-all duration-300 hover:bg-brand-red shadow-xs hover:shadow-[0_0_15px_rgba(193,27,27,0.3)] cursor-pointer"
-          >
-            QUERO TREINAR
-          </button>
-          
-          {/* Mobile menu toggle */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden w-10 h-10 rounded-full border border-white/10 bg-neutral-900/60 text-white flex items-center justify-center cursor-pointer"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
-      </header>
-
-      {/* Mobile Navigation Overlay */}
-      {mobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="fixed inset-0 z-[60] bg-neutral-950/98 backdrop-blur-xl flex flex-col items-center justify-center pointer-events-auto md:hidden"
-        >
-          <button
-            onClick={() => setMobileMenuOpen(false)}
-            className="absolute top-6 right-6 w-10 h-10 rounded-full border border-white/10 bg-neutral-900 text-white flex items-center justify-center cursor-pointer"
-            aria-label="Close menu"
-          >
-            <X className="w-5 h-5" />
-          </button>
-          <nav className="flex flex-col items-center gap-8">
-            {navItems.map((item, i) => (
-              <motion.button
-                key={item}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.08 }}
-                onClick={() => scrollToSection(item.toLowerCase())}
-                className="font-display font-black text-2xl tracking-widest text-white uppercase transition-colors hover:text-brand-red cursor-pointer"
-              >
-                {item}
-              </motion.button>
-            ))}
-          </nav>
-        </motion.div>
-      )}
 
       {/* Main Impact Hero Content */}
       <div className="relative z-10 w-full max-w-5xl mx-auto px-6 text-center flex flex-col items-center justify-center flex-1">
