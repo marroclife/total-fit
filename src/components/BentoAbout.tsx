@@ -37,7 +37,7 @@ export default function BentoAbout() {
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           
           {/* Bento Item 1: Narrative Block */}
           <motion.div
@@ -84,27 +84,27 @@ export default function BentoAbout() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="glassmorphism rounded-3xl p-8 md:p-10 relative overflow-hidden group flex flex-col justify-between h-full"
+            className="glassmorphism rounded-3xl p-6 md:p-8 relative group flex flex-col justify-start"
           >
             <div className="absolute right-0 bottom-0 w-64 h-64 bg-emerald-500/5 rounded-full filter blur-3xl pointer-events-none" />
 
-            <div className="relative z-10 h-full flex flex-col">
-              <div className="mb-6">
+            <div className="relative z-10 flex flex-col justify-start">
+              <div className="flex flex-col items-center text-center">
                 <img
                   src="/assets/logo-totalfit.png"
                   alt="Total Fit Academia"
-                  className="h-16 w-auto object-contain opacity-90"
+                  className="h-40 md:h-52 w-auto object-contain opacity-95"
                 />
+
+                <span className="font-tech text-xs text-brand-red tracking-widest uppercase font-semibold mt-3 block">
+                  DIFERENCIAIS EXCLUSIVOS
+                </span>
+                <h3 className="font-display font-bold text-2xl md:text-3xl text-white uppercase leading-tight mt-1">
+                  POR QUE NOS ESCOLHER?
+                </h3>
               </div>
 
-              <span className="font-tech text-xs text-emerald-400 tracking-widest uppercase font-semibold mb-2 block">
-                DIFERENCIAIS EXCLUSIVOS
-              </span>
-              <h3 className="font-display font-bold text-2xl text-white uppercase leading-tight">
-                POR QUE NOS ESCOLHER?
-              </h3>
-
-              <div className="mt-8 space-y-5 flex-1">
+              <div className="space-y-3 mt-5">
                 {[
                   "Espaço amplo e em expansão constante",
                   "Equipamentos novos e diferenciados",
@@ -119,11 +119,13 @@ export default function BentoAbout() {
                     key={index}
                     className="flex gap-3 text-left"
                   >
-                    <div className="w-5 h-5 rounded-full bg-brand-red/15 flex items-center justify-center shrink-0 mt-0.5 border border-brand-red/30">
-                      <Sparkles className="w-3 h-3 text-brand-red" />
+                    <div className="w-6 h-6 rounded-full bg-brand-red/15 flex items-center justify-center shrink-0 mt-0.5 border border-brand-red/30">
+                      <Sparkles className="w-3.5 h-3.5 text-brand-red" />
                     </div>
                     <div>
-                      <h4 className="font-sans font-semibold text-sm text-neutral-100">{text}</h4>
+                      <h4 className="font-sans font-semibold text-sm md:text-base text-neutral-100">
+                        {text}
+                      </h4>
                     </div>
                   </motion.div>
                 ))}
