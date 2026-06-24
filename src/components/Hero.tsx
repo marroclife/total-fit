@@ -238,7 +238,7 @@ export default function Hero() {
         >
           <span className="w-2 h-2 rounded-full bg-brand-red animate-ping" />
           <span className="font-tech font-semibold text-xs text-brand-red tracking-widest uppercase">
-            A MAIOR ACADEMIA DE MANGARATIBA
+            SUA MELHOR VERSÃO COMEÇA AQUI
           </span>
         </motion.div>
 
