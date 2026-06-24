@@ -1,49 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { motion, useInView } from "motion/react";
-import { Star, Award, MapPin, Sparkles, ShieldCheck, Dumbbell, Compass } from "lucide-react";
-
-interface CounterProps {
-  value: number;
-  decimals?: number;
-  suffix?: string;
-  duration?: number;
-}
-
-function AnimatedCounter({ value, decimals = 0, suffix = "", duration = 1.5 }: CounterProps) {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    let start = 0;
-    const end = value;
-    const totalTicks = 60;
-    const increment = (end - start) / totalTicks;
-    let currentTick = 0;
-
-    const timer = setInterval(() => {
-      currentTick++;
-      start += increment;
-      if (currentTick >= totalTicks) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(Number(start.toFixed(decimals)));
-      }
-    }, (duration * 1000) / totalTicks);
-
-    return () => clearInterval(timer);
-  }, [value, decimals, duration, isInView]);
-
-  return (
-    <span ref={ref} className="font-tech tabular-nums">
-      {decimals > 0 ? count.toFixed(decimals) : Math.floor(count)}
-      {suffix}
-    </span>
-  );
-}
+import { motion } from "motion/react";
+import { MapPin, Sparkles, ShieldCheck, Dumbbell, Compass } from "lucide-react";
 
 export default function BentoAbout() {
   return (
@@ -80,16 +36,16 @@ export default function BentoAbout() {
           <div className="w-16 h-1.5 bg-brand-red mx-auto mt-6 rounded-full shadow-[0_0_10px_rgba(193,27,27,0.5)]" />
         </div>
 
-        {/* Bento Grid Assimétrico */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
-          {/* Bento Item 1: Narrative Block (2 columns wide, primary text) */}
+          {/* Bento Item 1: Narrative Block */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
-            className="md:col-span-2 glassmorphism rounded-3xl p-8 md:p-10 flex flex-col justify-between overflow-hidden relative group"
+            className="glassmorphism rounded-3xl p-8 md:p-10 flex flex-col justify-between overflow-hidden relative group"
           >
             {/* Ambient subtle glow */}
             <div className="absolute top-0 right-0 w-48 h-48 bg-brand-red/5 rounded-full filter blur-3xl pointer-events-none transition-opacity duration-300 group-hover:bg-brand-red/10" />
@@ -122,112 +78,29 @@ export default function BentoAbout() {
             </div>
           </motion.div>
 
-          {/* Bento Item 2: Rating Statistics Widget */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="glassmorphism rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group border-brand-red/15 hover:border-brand-red/35 transition-all duration-300 hover:shadow-[0_10px_30px_rgba(193,27,27,0.05)]"
-          >
-            {/* Back ambient card elements */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-red/10 rounded-full filter blur-2xl pointer-events-none" />
-            
-            <div className="flex justify-between items-start">
-              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
-                <Star className="w-6 h-6 text-amber-500 fill-amber-500" />
-              </div>
-              <span className="font-tech text-xs px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-500 font-semibold uppercase tracking-wider">RECOMMENDED</span>
-            </div>
-
-            <div className="my-8">
-              <div className="font-display font-black text-6xl md:text-7xl text-white tracking-tight flex items-baseline">
-                <AnimatedCounter value={4.7} decimals={1} />
-                <span className="text-amber-500 text-3xl ml-1">★</span>
-              </div>
-              <h4 className="font-display font-bold text-lg text-white mt-2 uppercase tracking-wider">AVALIAÇÃO GOOGLE</h4>
-              <p className="text-xs text-neutral-400 mt-2 font-sans leading-relaxed">
-                Média consagrada por nossos clientes como o espaço de treino mais aconchegante e eficiente da região.
-              </p>
-            </div>
-
-            <div className="pt-4 border-t border-white/5 flex items-center justify-between text-neutral-400 text-xs font-tech tracking-wider">
-              <span>Satisfeitos</span>
-              <span className="text-emerald-500 font-bold">100% SUCESSO</span>
-            </div>
-          </motion.div>
-
-          {/* Bento Item 3: Count of Overall Reviews Widget */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="glassmorphism rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group hover:border-brand-red/30 transition-all duration-300"
-          >
-            <div className="flex justify-between items-start">
-              <div className="w-12 h-12 rounded-2xl bg-brand-red/10 border border-brand-red/25 flex items-center justify-center">
-                <Award className="w-6 h-6 text-brand-red" />
-              </div>
-              <span className="font-tech text-xs px-2.5 py-1 rounded-md bg-brand-red/10 text-brand-red font-semibold uppercase tracking-wider">AUDITED</span>
-            </div>
-
-            <div className="my-8">
-              <div className="font-display font-black text-5xl md:text-6xl text-white tracking-tight">
-                +<AnimatedCounter value={4700} duration={1.8} />
-              </div>
-              <h4 className="font-display font-bold text-lg text-white mt-2 uppercase tracking-wider">AVALIAÇÕES REAIS</h4>
-              <p className="text-xs text-neutral-400 mt-2 font-sans leading-relaxed">
-                Milhares de feedbacks expressando superação de recordes, suporte individualizado e emagrecimento saudável sustentável.
-              </p>
-            </div>
-
-            <div className="pt-4 border-t border-white/5 flex items-center justify-between text-neutral-400 text-xs font-tech tracking-wider">
-              <span>Feedback Ativo</span>
-              <span className="text-white">PROVA SOCIAL</span>
-            </div>
-          </motion.div>
-
-          {/* Bento Item 4: Exclusividades & Diferenciais List */}
+          {/* Bento Item 2: Diferenciais Exclusivos */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:col-span-2 glassmorphism rounded-3xl p-8 md:p-10 relative overflow-hidden group"
+            className="glassmorphism rounded-3xl p-8 md:p-10 relative overflow-hidden group flex flex-col justify-between"
           >
             <div className="absolute right-0 bottom-0 w-64 h-64 bg-emerald-500/5 rounded-full filter blur-3xl pointer-events-none" />
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center h-full">
-              <div>
-                <span className="font-tech text-xs text-emerald-400 tracking-widest uppercase font-semibold mb-2 block">DIFERENCIAIS EXCLUSIVOS</span>
-                <h3 className="font-display font-bold text-2xl text-white uppercase leading-tight">
-                  POR QUE NOS ESCOLHER?
-                </h3>
-                <p className="text-xs text-neutral-400 mt-3 leading-relaxed">
-                  Tratamos o fitness como engenharia corporal: alta performance, conforto espacial e metodologia moderna de treino para as suas metas particulares.
-                </p>
-                
-                {/* Modality highlight widget */}
-                <div className="mt-6 flex items-center gap-3 bg-white/5 border border-white/5 p-4 rounded-2xl max-w-sm">
-                  <div className="w-10 h-10 rounded-xl bg-brand-red flex items-center justify-center font-display font-black text-white">
-                    6+
-                  </div>
-                  <div>
-                    <h5 className="font-display font-bold text-xs text-white uppercase">MODALIDADES</h5>
-                    <p className="text-[10px] text-neutral-400">Artes marciais, jump, musculação e muito mais</p>
-                  </div>
-                </div>
-              </div>
+            <div className="relative z-10 h-full flex flex-col">
+              <span className="font-tech text-xs text-emerald-400 tracking-widest uppercase font-semibold mb-2 block">DIFERENCIAIS EXCLUSIVOS</span>
+              <h3 className="font-display font-bold text-2xl text-white uppercase leading-tight">
+                POR QUE NOS ESCOLHER?
+              </h3>
 
-              <div className="space-y-4">
+              <div className="mt-8 space-y-5 flex-1">
                 {[
-                  { text: "A maior academia de Mangaratiba", sub: "Estrutura ampla em constante expansão" },
-                  { text: "Equipamentos novos e diferenciados", sub: "Máquinas modernas de alta performance" },
-                  { text: "Foco total em resultados reais", sub: "Metodologia voltada para força, saúde e bem-estar" },
-                  { text: "Ambiente de disciplina e constância", sub: "Espaço motivador para evoluir todo dia" },
-                  { text: "Atendimento personalizado e acessível", sub: "Profissionais que acompanham sua jornada" }
-                ].map((item, index) => (
+                  "Espaço amplo e em expansão constante",
+                  "Equipamentos novos e diferenciados",
+                  "Ambiente que motiva disciplina e constância",
+                  "Estrutura, foco e resultado em um só lugar"
+                ].map((text, index) => (
                   <motion.div 
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -240,8 +113,7 @@ export default function BentoAbout() {
                       <Sparkles className="w-3 h-3 text-brand-red" />
                     </div>
                     <div>
-                      <h4 className="font-sans font-semibold text-xs text-neutral-100">{item.text}</h4>
-                      <p className="text-[10px] text-neutral-400 leading-tight mt-0.5">{item.sub}</p>
+                      <h4 className="font-sans font-semibold text-sm text-neutral-100">{text}</h4>
                     </div>
                   </motion.div>
                 ))}
