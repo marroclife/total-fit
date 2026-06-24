@@ -102,10 +102,10 @@ export default function BentoAbout() {
               
               <div className="mt-6 space-y-4 text-neutral-300 font-sans text-sm md:text-base leading-relaxed">
                 <p>
-                  Localizada estrategicamente no coração de <strong className="text-white font-semibold">El Ranchito / Bairro do Saco em Mangaratiba</strong>, a <span className="text-white font-semibold">Total Fit Academia</span> é a maior academia da região. Não somos apenas um espaço para musculação: somos um ambiente de transformação de vidas, onde saúde, bem-estar, disciplina e superação caminham lado a lado.
+                  Localizada no coração de <strong className="text-white font-semibold">El Ranchito, no Bairro do Saco, em Mangaratiba</strong>, a <span className="text-white font-semibold">Total Fit Academia</span> é muito mais do que um espaço para a prática de musculação. Somos um ambiente dedicado à transformação de vidas, onde saúde, bem-estar, disciplina e superação caminham lado a lado.
                 </p>
                 <p>
-                  Com uma estrutura ampla, equipamentos novos e um time comprometido, oferecemos atendimento personalizado que respeita seus objetivos, seu ritmo e seus desafios. Estamos em expansão constante para entregar ainda mais conforto, tecnologia e resultados reais para quem leva o treino a sério.
+                  Acreditamos que cada pessoa possui objetivos únicos e merece um acompanhamento que respeite suas necessidades, seu ritmo e seus desafios. Por isso, oferecemos um atendimento personalizado, com profissionais qualificados e comprometidos em proporcionar uma experiência segura, motivadora e eficiente.
                 </p>
               </div>
             </div>
