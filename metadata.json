@@ -1,0 +1,6 @@
+{
+  "name": "Total Fit",
+  "description": "Total Fit Academia - A de alta performance em Mangaratiba. Venha transformar seus limites em realidade.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

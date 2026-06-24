@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,700;0,800;0,900;1,800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", sans-serif;
+  --font-tech: "Space Grotesk", sans-serif;
+
+  --color-obsidian: #0a0a0a;
+  --color-brand-red: #C11B1B;
+  --color-brand-red-light: #E31E24;
+  --color-brand-red-dark: #7A1212;
+  --color-steel: #1a1a1a;
+  --color-glass-white: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+}
+
+@layer utilities {
+  .glassmorphism {
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glassmorphism-premium {
+    background: linear-gradient(135deg, rgba(193, 27, 27, 0.05) 0%, rgba(26, 26, 26, 0.70) 100%);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(193, 27, 27, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(193, 27, 27, 0.1);
+  }
+
+  .text-glow-red {
+    text-shadow: 0 0 15px rgba(193, 27, 27, 0.5);
+  }
+
+  .bg-dot-grid {
+    background-size: 24px 24px;
+    background-image: radial-gradient(rgba(193, 27, 27, 0.1) 1px, transparent 1px);
+  }
+
+  .bg-dot-grid-white {
+    background-size: 32px 32px;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+}
+
+/* Base resets & styles */
+html {
+  scroll-behavior: smooth;
+  background-color: #0a0a0a;
+  color: #f5f5f5;
+  overflow-x: hidden;
+}
+
+/* Handle custom cursor hiding only on desktops to prevent breaking mobile touch experience */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  a, button, select, input, [role="button"] {
+    cursor: none;
+  }
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C11B1B;
+}
+
+/* Subtle glow pulse */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(193, 27, 27, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(193, 27, 27, 0.4);
+  }
+}
+
+.animate-glow-pulse {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Brand red underline accent */
+.brand-underline {
+  position: relative;
+}
+
+.brand-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #C11B1B, #E31E24);
+  border-radius: 2px;
+}
