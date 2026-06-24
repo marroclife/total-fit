@@ -16,9 +16,9 @@ export default defineConfig(() => {
       rollupOptions: {
         input: {
           main: resolve(__dirname, 'index.html'),
-          siloAcademia: resolve(__dirname, 'silos/academia-em-mangaratiba.html'),
-          siloBairro: resolve(__dirname, 'silos/academia-no-bairro-do-saco.html'),
-          siloMusculacao: resolve(__dirname, 'silos/musculacao-em-mangaratiba.html'),
+          siloAcademia: resolve(__dirname, 'academia-em-mangaratiba.html'),
+          siloBairro: resolve(__dirname, 'academia-no-bairro-do-saco.html'),
+          siloMusculacao: resolve(__dirname, 'musculacao-em-mangaratiba.html'),
         },
       },
     },
