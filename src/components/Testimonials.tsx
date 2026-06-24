@@ -6,7 +6,7 @@ import { TestimonialItem } from "../types";
 const TESTIMONIALS: TestimonialItem[] = [
   {
     id: "google-1",
-    name: "Anônimo",
+    name: "Andresa Mota",
     role: "Google Review",
     content: "Melhor academia de Mangaratiba. Excelentes profissionais sem contar os proprietários pessoas simples e humildes. Que Deus continue abençoando o caminho de vocês.🙏🙌",
     avatar: "",

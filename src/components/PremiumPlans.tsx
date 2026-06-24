@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Flame, Send, CalendarCheck } from "lucide-react";
+import { Flame, Send } from "lucide-react";
 import confetti from "canvas-confetti";
 
 export default function PremiumPlans() {
@@ -77,13 +77,6 @@ export default function PremiumPlans() {
                 className="w-full sm:w-auto px-10 py-4.5 rounded-2xl bg-brand-red hover:bg-brand-red-light text-white font-display font-black text-xs tracking-widest uppercase transition-all duration-300 shadow-lg shadow-brand-red/25 hover:shadow-brand-red/40 hover:scale-[1.02] flex items-center justify-center gap-2 cursor-pointer"
               >
                 FALAR NO WHATSAPP <Send className="w-4 h-4" />
-              </button>
-
-              <button
-                onClick={() => window.open("https://wa.me/5521968774308?text=Olá! Quero agendar uma aula experimental grátis na Total Fit!", "_blank")}
-                className="w-full sm:w-auto px-10 py-4.5 rounded-2xl border border-white/10 bg-neutral-900/60 hover:bg-neutral-900 text-white font-display font-bold text-xs tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
-              >
-                AULA EXPERIMENTAL <CalendarCheck className="w-4 h-4" />
               </button>
             </div>
 
