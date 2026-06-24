@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { MapPin, Sparkles, ShieldCheck, Dumbbell, Compass } from "lucide-react";
+import { MapPin, Sparkles, ShieldCheck, Compass } from "lucide-react";
 
 export default function BentoAbout() {
   return (
@@ -37,7 +37,7 @@ export default function BentoAbout() {
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
           
           {/* Bento Item 1: Narrative Block */}
           <motion.div
@@ -45,7 +45,7 @@ export default function BentoAbout() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
-            className="glassmorphism rounded-3xl p-8 md:p-10 flex flex-col justify-between overflow-hidden relative group"
+            className="glassmorphism rounded-3xl p-8 md:p-10 flex flex-col justify-between overflow-hidden relative group h-full"
           >
             {/* Ambient subtle glow */}
             <div className="absolute top-0 right-0 w-48 h-48 bg-brand-red/5 rounded-full filter blur-3xl pointer-events-none transition-opacity duration-300 group-hover:bg-brand-red/10" />
@@ -78,46 +78,42 @@ export default function BentoAbout() {
             </div>
           </motion.div>
 
-          {/* Bento Item 2: Diferenciais Exclusivos */}
+          {/* Bento Item 2: Galeria da Academia (placeholders com logo) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="glassmorphism rounded-3xl p-8 md:p-10 relative overflow-hidden group flex flex-col justify-between"
+            className="glassmorphism rounded-3xl p-4 md:p-5 relative overflow-hidden group flex flex-col h-full min-h-[520px]"
           >
-            <div className="absolute right-0 bottom-0 w-64 h-64 bg-emerald-500/5 rounded-full filter blur-3xl pointer-events-none" />
-            
-            <div className="relative z-10 h-full flex flex-col">
-              <span className="font-tech text-xs text-emerald-400 tracking-widest uppercase font-semibold mb-2 block">DIFERENCIAIS EXCLUSIVOS</span>
-              <h3 className="font-display font-bold text-2xl text-white uppercase leading-tight">
-                POR QUE NOS ESCOLHER?
-              </h3>
+            <div className="absolute right-0 bottom-0 w-64 h-64 bg-brand-red/5 rounded-full filter blur-3xl pointer-events-none" />
 
-              <div className="mt-8 space-y-5 flex-1">
-                {[
-                  "Espaço amplo e em expansão constante",
-                  "Equipamentos novos e diferenciados",
-                  "Ambiente que motiva disciplina e constância",
-                  "Estrutura, foco e resultado em um só lugar"
-                ].map((text, index) => (
-                  <motion.div 
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1, duration: 0.4 }}
-                    key={index} 
-                    className="flex gap-3 text-left"
-                  >
-                    <div className="w-5 h-5 rounded-full bg-brand-red/15 flex items-center justify-center shrink-0 mt-0.5 border border-brand-red/30">
-                      <Sparkles className="w-3 h-3 text-brand-red" />
-                    </div>
-                    <div>
-                      <h4 className="font-sans font-semibold text-sm text-neutral-100">{text}</h4>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+            <div className="relative z-10 mb-4">
+              <span className="font-tech text-xs text-brand-red tracking-widest uppercase font-semibold block">NOSSA ESTRUTURA</span>
+              <h3 className="font-display font-bold text-xl text-white uppercase leading-tight mt-1">
+                A ACADEMIA POR DENTRO
+              </h3>
+            </div>
+
+            <div className="relative z-10 grid grid-cols-2 grid-rows-2 gap-3 flex-1 min-h-0">
+              {[0, 1, 2, 3].map((index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08, duration: 0.4 }}
+                  className="relative rounded-2xl overflow-hidden border border-white/5 bg-neutral-900/80 group/item cursor-pointer min-h-0"
+                >
+                  <img
+                    src="/assets/logo-totalfit.png"
+                    alt={`Foto da academia ${index + 1}`}
+                    className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover/item:scale-110 group-hover/item:brightness-110"
+                  />
+                  <div className="absolute inset-0 bg-brand-red/0 group-hover/item:bg-brand-red/10 transition-colors duration-300" />
+                  <div className="absolute inset-0 ring-1 ring-inset ring-white/0 group-hover/item:ring-brand-red/40 rounded-2xl transition-all duration-300" />
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
